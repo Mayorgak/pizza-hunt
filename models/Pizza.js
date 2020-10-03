@@ -6,9 +6,13 @@ const PizzaSchema = new Schema(
   {
     pizzaName: {
       type: String,
+      required: true,
+      trim: true,
     },
     createdBy: {
       type: String,
+      required: true,
+      trim: true,
     },
     createdAt: {
       type: Date,
@@ -18,6 +22,8 @@ const PizzaSchema = new Schema(
     },
     size: {
       type: String,
+      default: "Large",
+      enum: ["Personal", "Small", "Medium", "Large", "Extra Large"],
       default: "Large",
     },
     toppings: [],
@@ -29,10 +35,10 @@ const PizzaSchema = new Schema(
     ],
   },
   {
-   toJSON: {
-  virtuals: true,
-  getters: true
-},
+    toJSON: {
+      virtuals: true,
+      getters: true,
+    },
     id: false,
   }
 );
